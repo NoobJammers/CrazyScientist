@@ -29,8 +29,10 @@ namespace Platformer.Mechanics
 
         public JumpState jumpState = JumpState.Grounded;
         private bool stopJump;
-        /*internal new*/ public Collider2D collider2d;
-        /*internal new*/ public AudioSource audioSource;
+        /*internal new*/
+        public Collider2D collider2d;
+        /*internal new*/
+        public AudioSource audioSource;
         public Health health;
         public bool controlEnabled = true;
 
@@ -136,6 +138,19 @@ namespace Platformer.Mechanics
             Jumping,
             InFlight,
             Landed
+        }
+
+
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.tag == "Blob")
+            {
+                if (!other.GetComponent<BlobHandler>().isFollowing)
+                {
+                    other.GetComponent<BlobHandler>().StartFollowing();
+                }
+            }
         }
     }
 }
