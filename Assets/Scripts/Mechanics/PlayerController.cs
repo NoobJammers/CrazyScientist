@@ -33,7 +33,7 @@ namespace Platformer.Mechanics
         /*internal new*/ public AudioSource audioSource;
         public Health health;
         public bool controlEnabled = true;
-
+        public static bool flipBool;
         bool jump;
         Vector2 move;
         SpriteRenderer spriteRenderer;
@@ -49,6 +49,7 @@ namespace Platformer.Mechanics
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+
         }
 
         protected override void Update()
@@ -119,9 +120,14 @@ namespace Platformer.Mechanics
             }
 
             if (move.x > 0.01f)
+            {
                 spriteRenderer.flipX = false;
+                flipBool = false;
+            }
             else if (move.x < -0.01f)
-                spriteRenderer.flipX = true;
+            { spriteRenderer.flipX = true;
+                flipBool = true;
+            }
 
             animator.SetBool("grounded", IsGrounded);
             animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
