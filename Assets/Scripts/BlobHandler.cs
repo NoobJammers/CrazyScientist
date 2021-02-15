@@ -8,9 +8,18 @@ public class BlobHandler : MonoBehaviour
 
 
     [SerializeField] Rigidbody2D rigidBody2D;
-    [SerializeField] Transform mergePos;
-    [SerializeField] Ease EaseType;
+    [SerializeField] Collider2D myCollider2D;
+    [SerializeField] Animator animator;
+    [SerializeField] Transform mergePos; //Position above player's head
+    [SerializeField] Ease moveToMergePos;
     public bool isFollowing { get; private set; }   //Is following the user?
+
+
+
+
+
+    float timeToMergePos = 1f; //Time for blob to go to mergePos
+
 
 
     void Start()
@@ -31,10 +40,21 @@ public class BlobHandler : MonoBehaviour
     //Called when the user clicks on the blob
     private void OnMouseDown()
     {
-        //rigidBody2D.velocity = (mergePos.position - transform.position).normalized;
-        transform.DOMove(mergePos.position, 1f, false).SetEase(EaseType);
-    
-    }
 
+        myCollider2D.enabled = false;
+        transform.DOMove(mergePos.position, timeToMergePos, false).SetEase(moveToMergePos).OnComplete(() =>
+        {
+
+            //animator.SetTrigger("spin");
+        });
+        StartCoroutine(KickStartBlobRotate());
+
+    }
+    IEnumerator KickStartBlobRotate()
+    {
+        yield return new WaitForSeconds(timeToMergePos - 0.2f);
+        animator.SetTrigger("spin");
+
+    }
 
 }
