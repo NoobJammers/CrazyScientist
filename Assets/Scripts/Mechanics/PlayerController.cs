@@ -17,7 +17,8 @@ namespace Platformer.Mechanics
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
-
+        public GameObject followObject;
+        public Vector3 initpos;
         /// <summary>
         /// Max horizontal speed of the player.
         /// </summary>
@@ -41,6 +42,10 @@ namespace Platformer.Mechanics
         SpriteRenderer spriteRenderer;
         internal Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+        public FollowedBy a;
+        public FollowedBy b;
+        public FollowedBy c;
+        public FollowedBy d;
 
         public Bounds Bounds => collider2d.bounds;
 
@@ -51,9 +56,24 @@ namespace Platformer.Mechanics
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+            initpos = followObject.transform.localPosition;
+        }
+        protected override void OnEnable()
+        {
+           /* GameObject[] otherObjects = GameObject.FindGameObjectsWithTag("Blob");
+
+            foreach (GameObject obj in otherObjects)
+            {
+                Physics2D.IgnoreCollision(obj.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            }*/
+            base.OnEnable();
+            a.Add();
+            c.Add();
+            b.Add();
+       
+            d.Add();
 
         }
-
         protected override void Update()
         {
             if (controlEnabled)
@@ -124,11 +144,20 @@ namespace Platformer.Mechanics
             if (move.x > 0.01f)
             {
                 spriteRenderer.flipX = false;
+                if (flipBool != false)
+                    TrainMove.flip();
                 flipBool = false;
+                followObject.transform.localPosition =new Vector3(-1*initpos.x,initpos.y,initpos.z);
+             
+               
             }
             else if (move.x < -0.01f)
             { spriteRenderer.flipX = true;
+                if (flipBool != true)
+                    TrainMove.flip();
                 flipBool = true;
+                followObject.transform.localPosition = 1*initpos;
+             
             }
 
             animator.SetBool("grounded", IsGrounded);
@@ -145,7 +174,24 @@ namespace Platformer.Mechanics
             InFlight,
             Landed
         }
-
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            /*if (collision.gameObject.tag == "Blob")
+            {
+                Physics2D.IgnoreCollision(collision.collider, collider2d);
+                Debug.Log("collision happenibg");
+            }*/
+         
+        }
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            /*if (collision.gameObject.tag == "Blob")
+            {
+                Physics2D.IgnoreCollision(collision.collider, collider2d);
+                Debug.Log("collision happenibg stay");
+            }*/
+       
+        }
 
 
         private void OnTriggerEnter2D(Collider2D other)

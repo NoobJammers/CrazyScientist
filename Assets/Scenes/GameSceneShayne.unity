@@ -138,6 +138,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1208144871472054, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
+      propertyPath: m_TagString
+      value: player
+      objectReference: {fileID: 0}
     - target: {fileID: 4520396350849616, guid: 7d60c822c3f1b408ea7a00ecdb5e047a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -292,6 +296,7 @@ MonoBehaviour:
   points: []
   noOfPoints: 20
   force: 10
+  blob: {fileID: 0}
   isHovering: 1
 --- !u!58 &342362702
 CircleCollider2D:
