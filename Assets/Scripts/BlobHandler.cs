@@ -7,10 +7,11 @@ public class BlobHandler : MonoBehaviour
 {
 
 
-    [SerializeField] Rigidbody2D rigidBody2D;
-    [SerializeField] Collider2D myCollider2D;
+    [SerializeField] Rigidbody2D rigidBody;
+    [SerializeField] Collider2D myCollider;
     [SerializeField] Animator animator;
     [SerializeField] Transform mergePos; //Position above player's head
+    [SerializeField] PlayerShooter playerShooter;
     [SerializeField] Ease moveToMergePos;
     public bool isFollowing { get; private set; }   //Is following the user?
 
@@ -41,7 +42,7 @@ public class BlobHandler : MonoBehaviour
     private void OnMouseDown()
     {
 
-        myCollider2D.enabled = false;
+        myCollider.enabled = false;
         transform.DOMove(mergePos.position, timeToMergePos, false).SetEase(moveToMergePos).OnComplete(() =>
         {
 
@@ -52,6 +53,7 @@ public class BlobHandler : MonoBehaviour
     }
     IEnumerator KickStartBlobRotate()
     {
+        playerShooter.SetRigidBody(rigidBody);
         yield return new WaitForSeconds(timeToMergePos - 0.2f);
         animator.SetTrigger("spin");
 
