@@ -53,6 +53,8 @@ public class BlobHandler : MonoBehaviour
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
         rigid.drag = 10;
         rigid.angularDrag = 3;
+      
+
         mergePos.GetComponent<FollowedBy>().followedby = GetComponent<FollowedBy>();
         playerShooter.SetRigidBody(rigidBody);
         /*  rigid.isKinematic = true;*/

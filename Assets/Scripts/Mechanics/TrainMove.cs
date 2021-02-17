@@ -69,7 +69,9 @@ public class TrainMove : MonoBehaviour
         {
             if (temp.followedby == followedby)
             {
+                var tempor = temp.followedby;
                 temp.followedby = temp.followedby.followedby;
+                tempor.followedby = null;
                 return;
             }
             temp = temp.followedby;
