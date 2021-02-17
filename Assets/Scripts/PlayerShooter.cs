@@ -26,7 +26,7 @@ public class PlayerShooter : MonoBehaviour
 
 
         //To detect if clicked outside
-        if (rigidBody != null && Input.GetMouseButtonUp(0) && (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).magnitude > 1 && (transform.position-rigidBody.transform.position).magnitude<0.5f)
+        if (rigidBody != null &&!isPressed &&Input.GetMouseButtonDown(0) && (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).magnitude > 1 && (transform.position-rigidBody.transform.position).magnitude<0.5f)
         {
             rigidBody.drag = 19.71f;
             rigidBody.angularDrag = 4.25f;
@@ -35,6 +35,7 @@ public class PlayerShooter : MonoBehaviour
             rigidBody.isKinematic = false;
             TrainMove.ExtendTrain(rigidBody.GetComponent<FollowedBy>());
             hasHoveringBlob = false;
+            GetComponent<FollowedBy>().followedby = null;
             rigidBody = null;
         }
         if (isPressed)
