@@ -58,7 +58,6 @@ public class BlobHandler : MonoBehaviour
         /*  rigid.isKinematic = true;*/
         /*rigid.GetComponent<SpringJoint2D>().enabled = true;*/
 
-        myCollider.enabled = false;
      
         /*rigid.GetComponent<SpringJoint2D>().enabled = true;*/
         /*  transform.DOMove(mergePos.position, timeToMergePos, false).SetEase(moveToMergePos).OnComplete(() =>

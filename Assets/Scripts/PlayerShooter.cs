@@ -92,7 +92,8 @@ public class PlayerShooter : MonoBehaviour
     void OnMouseDown()
     {
         if (hasHoveringBlob)
-        {   
+        {
+           rigidBody.GetComponent<Collider2D>().enabled = false;
             isPressed = true;
             rigidBody.isKinematic = true;
             rigidBody.GetComponent<SpringJoint2D>().enabled = true;
