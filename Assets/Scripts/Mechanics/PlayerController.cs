@@ -60,19 +60,10 @@ namespace Platformer.Mechanics
         }
         protected override void OnEnable()
         {
-           /* GameObject[] otherObjects = GameObject.FindGameObjectsWithTag("Blob");
-
-            foreach (GameObject obj in otherObjects)
-            {
-                Physics2D.IgnoreCollision(obj.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-            }*/
+           
             base.OnEnable();
-             a.Add();
-            b.Add();
-            /*c.Add();
-          
-
-            d.Add();*/
+            TrainMove.ExtendTrain(followObject.GetComponent<FollowedBy>());
+         
 
         }
         protected override void Update()

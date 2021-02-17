@@ -42,7 +42,8 @@ public class TrainMove : MonoBehaviour
         FollowedBy first = null;
         List<FollowedBy> list = new List<FollowedBy>();
         var temp = Head.followedby;
-
+        if (temp == null)
+            return;
         
         while (temp.followedby != null)
         {

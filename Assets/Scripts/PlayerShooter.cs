@@ -57,7 +57,7 @@ public class PlayerShooter : MonoBehaviour
     IEnumerator SetMeUp()
     {
         yield return new WaitForSeconds(timeInterval);
-        SetTrajectory();
+      /*  SetTrajectory();*/
     }
     void SetTrajectory()
     {
@@ -104,6 +104,8 @@ public class PlayerShooter : MonoBehaviour
         {
             isPressed = false;
             rigidBody.isKinematic = false;
+            rigidBody.drag = 0;
+            rigidBody.angularDrag = 0;
             hasHoveringBlob = false;
             StartCoroutine(Release());
         }
@@ -114,8 +116,8 @@ public class PlayerShooter : MonoBehaviour
 
         rigidBody.GetComponent<SpringJoint2D>().enabled = false;
         // this.enabled = false;
-
-        yield return new WaitForSeconds(2f);
+/*
+        yield return new WaitForSeconds(2f);*/
 
 
 

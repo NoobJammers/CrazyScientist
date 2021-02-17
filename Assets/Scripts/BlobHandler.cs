@@ -45,8 +45,10 @@ public class BlobHandler : MonoBehaviour
         
             TrainMove.RemoveCarriage(GetComponent<FollowedBy>());
             Debug.Log("CLICKED");
-            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-            myCollider.enabled = false;
+        Rigidbody2D rigid = GetComponent<Rigidbody2D>();
+        rigid.isKinematic = true;
+        rigid.GetComponent<SpringJoint2D>().enabled = true;
+        myCollider.enabled = false;
             transform.DOMove(mergePos.position, timeToMergePos, false).SetEase(moveToMergePos).OnComplete(() =>
             {
 
@@ -56,8 +58,7 @@ public class BlobHandler : MonoBehaviour
           /*  StartCoroutine();*/
         
        
-            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            TrainMove.ExtendTrain(GetComponent<FollowedBy>());
+         
           
     
 
