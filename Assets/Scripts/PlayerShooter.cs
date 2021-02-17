@@ -25,6 +25,7 @@ public class PlayerShooter : MonoBehaviour
     {
 
 
+        //To detect if clicked outside
         if (rigidBody != null && Input.GetMouseButtonUp(0) && (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).magnitude > 1 && (transform.position-rigidBody.transform.position).magnitude<0.5f)
         {
             rigidBody.drag = 19.71f;
@@ -121,6 +122,8 @@ public class PlayerShooter : MonoBehaviour
         yield return new WaitForSeconds(releaseTime);
         rigidBody.GetComponent<SpringJoint2D>().enabled = false;
         yield return new WaitForSeconds(0.12f);
+
+        //To make sure if blob is dragged beneath the floor during spring movememnt then it can clear it before colliding again
         rigidBody.GetComponent<Collider2D>().enabled = true;
         rigidBody = null;
 
