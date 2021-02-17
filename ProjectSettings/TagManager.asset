@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Bullet
   - player
+  - Blob
   layers:
   - Default
   - TransparentFX
@@ -17,9 +18,9 @@ TagManager:
   - 
   - 
   - Level
-  - Enemy
+  - 
   - Usable
-  - Interactable
+  - Platform
   - IgnorePlayer
   - Player
   - Cameras
@@ -28,8 +29,8 @@ TagManager:
   - EnemyWeapon
   - BossWeakPoint
   - Bullet
-  - 
-  - 
+  - Enemy
+  - Interactable
   - 
   - 
   - 
@@ -39,7 +40,7 @@ TagManager:
   - 
   - 
   - PlayerDrop
-  - Platform
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0

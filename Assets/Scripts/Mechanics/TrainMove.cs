@@ -60,4 +60,18 @@ public class TrainMove : MonoBehaviour
         Head.followedby = first;
 
     }
+    public static void RemoveCarriage(FollowedBy followedby)
+    {
+        var temp = Head;
+
+        while (temp != null)
+        {
+            if (temp.followedby == followedby)
+            {
+                temp.followedby = temp.followedby.followedby;
+                return;
+            }
+            temp = temp.followedby;
+        }
+    }
 }

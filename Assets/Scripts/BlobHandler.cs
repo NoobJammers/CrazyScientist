@@ -13,6 +13,7 @@ public class BlobHandler : MonoBehaviour
     [SerializeField] Transform mergePos; //Position above player's head
     [SerializeField] PlayerShooter playerShooter;
     [SerializeField] Ease moveToMergePos;
+    private bool clicked = false;
     public bool isFollowing { get; private set; }   //Is following the user?
 
 
@@ -41,21 +42,30 @@ public class BlobHandler : MonoBehaviour
     //Called when the user clicks on the blob
     private void OnMouseDown()
     {
-        Debug.Log("CLICKED");
+        
+            TrainMove.RemoveCarriage(GetComponent<FollowedBy>());
+            Debug.Log("CLICKED");
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            myCollider.enabled = false;
+            transform.DOMove(mergePos.position, timeToMergePos, false).SetEase(moveToMergePos).OnComplete(() =>
+            {
 
-        myCollider.enabled = false;
-        transform.DOMove(mergePos.position, timeToMergePos, false).SetEase(moveToMergePos).OnComplete(() =>
-        {
-
-            //animator.SetTrigger("spin");
+                //animator.SetTrigger("spin");
+                KickStartBlobRotate();
         });
-        StartCoroutine(KickStartBlobRotate());
+          /*  StartCoroutine();*/
+        
+       
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            TrainMove.ExtendTrain(GetComponent<FollowedBy>());
+          
+    
 
     }
-    IEnumerator KickStartBlobRotate()
+   void KickStartBlobRotate()
     {
         playerShooter.SetRigidBody(rigidBody);
-        yield return new WaitForSeconds(timeToMergePos - 0.2f);
+      
         animator.SetTrigger("spin");
 
     }
