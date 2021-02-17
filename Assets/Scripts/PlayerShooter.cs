@@ -25,7 +25,7 @@ public class PlayerShooter : MonoBehaviour
     {
 
 
-     /*   if (rigidBody!=null&&Input.GetMouseButtonDown(0) && (Camera.main.ScreenToWorldPoint(Input.mousePosition)-transform.position).magnitude>1)
+        if (rigidBody != null && Input.GetMouseButtonUp(0) && (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).magnitude > 1 && (transform.position-rigidBody.transform.position).magnitude<0.5f)
         {
             rigidBody.drag = 19.71f;
             rigidBody.angularDrag = 4.25f;
@@ -33,8 +33,9 @@ public class PlayerShooter : MonoBehaviour
             rigidBody.GetComponent<SpringJoint2D>().enabled = false;
             rigidBody.isKinematic = false;
             TrainMove.ExtendTrain(rigidBody.GetComponent<FollowedBy>());
+            hasHoveringBlob = false;
             rigidBody = null;
-        }*/
+        }
         if (isPressed)
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -121,7 +122,7 @@ public class PlayerShooter : MonoBehaviour
         rigidBody.GetComponent<SpringJoint2D>().enabled = false;
         yield return new WaitForSeconds(0.12f);
         rigidBody.GetComponent<Collider2D>().enabled = true;
-        
+        rigidBody = null;
 
      
         // this.enabled = false;

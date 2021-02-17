@@ -294,7 +294,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 10.8333235
+  m_Distance: 10
   m_DampingRatio: 0
   m_Frequency: 1.5
 --- !u!114 &8584253972455067978
@@ -309,11 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 435d640febe445f4e94f83485c1aa4e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidBody: {fileID: 6953981090293759017}
-  myCollider: {fileID: 6975011311730831963}
-  animator: {fileID: 7018725808587905541}
   mergePos: {fileID: 0}
-  playerShooter: {fileID: 0}
   moveToMergePos: 0
 --- !u!114 &867716661
 MonoBehaviour:
