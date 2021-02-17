@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerShooter : MonoBehaviour
 {
 
-    [SerializeField] Rigidbody2D rigidBody;
+    private  Rigidbody2D rigidBody;
     [SerializeField] Rigidbody2D hook;
     [SerializeField] GameObject trajectoryBlob;
     [SerializeField] float impulseForce;
@@ -84,6 +84,7 @@ public class PlayerShooter : MonoBehaviour
     public void SetRigidBody(Rigidbody2D rb)
     {
         rigidBody = rb;
+     /*   rigidBody.transform.SetParent(gameObject.transform,true);*/
         hasHoveringBlob = true;
 
     }
@@ -91,10 +92,11 @@ public class PlayerShooter : MonoBehaviour
     void OnMouseDown()
     {
         if (hasHoveringBlob)
-        {
+        {   
             isPressed = true;
             rigidBody.isKinematic = true;
             rigidBody.GetComponent<SpringJoint2D>().enabled = true;
+            GetComponent<FollowedBy>().followedby = null;
         }
     }
 
@@ -106,6 +108,7 @@ public class PlayerShooter : MonoBehaviour
             rigidBody.isKinematic = false;
             rigidBody.drag = 0;
             rigidBody.angularDrag = 0;
+            rigidBody.GetComponent<Collider2D>().enabled = true;
             hasHoveringBlob = false;
             StartCoroutine(Release());
         }

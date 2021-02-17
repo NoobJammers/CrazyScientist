@@ -7,11 +7,11 @@ public class BlobHandler : MonoBehaviour
 {
 
 
-    [SerializeField] Rigidbody2D rigidBody;
-    [SerializeField] Collider2D myCollider;
-    [SerializeField] Animator animator;
+   private Rigidbody2D rigidBody;
+   private Collider2D myCollider;
+   private Animator animator;
     [SerializeField] Transform mergePos; //Position above player's head
-    [SerializeField] PlayerShooter playerShooter;
+   private PlayerShooter playerShooter;
     [SerializeField] Ease moveToMergePos;
     private bool clicked = false;
     public bool isFollowing { get; private set; }   //Is following the user?
@@ -26,7 +26,10 @@ public class BlobHandler : MonoBehaviour
 
     void Start()
     {
-        
+        myCollider = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
+        playerShooter = mergePos.GetComponent<PlayerShooter>();
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 
 
@@ -44,28 +47,37 @@ public class BlobHandler : MonoBehaviour
     {
         
             TrainMove.RemoveCarriage(GetComponent<FollowedBy>());
+            
+            
             Debug.Log("CLICKED");
         Rigidbody2D rigid = GetComponent<Rigidbody2D>();
-        rigid.isKinematic = true;
-        rigid.GetComponent<SpringJoint2D>().enabled = true;
-        myCollider.enabled = false;
-            transform.DOMove(mergePos.position, timeToMergePos, false).SetEase(moveToMergePos).OnComplete(() =>
-            {
+        rigid.drag = 10;
+        rigid.angularDrag = 3;
+        mergePos.GetComponent<FollowedBy>().followedby = GetComponent<FollowedBy>();
+        playerShooter.SetRigidBody(rigidBody);
+        /*  rigid.isKinematic = true;*/
+        /*rigid.GetComponent<SpringJoint2D>().enabled = true;*/
 
-                //animator.SetTrigger("spin");
-                KickStartBlobRotate();
-        });
-          /*  StartCoroutine();*/
-        
-       
-         
-          
-    
+        myCollider.enabled = false;
+     
+        /*rigid.GetComponent<SpringJoint2D>().enabled = true;*/
+        /*  transform.DOMove(mergePos.position, timeToMergePos, false).SetEase(moveToMergePos).OnComplete(() =>
+          {
+
+              //animator.SetTrigger("spin");
+              KickStartBlobRotate();
+      });*/
+        /*  StartCoroutine();*/
+
+
+
+
+
 
     }
    void KickStartBlobRotate()
     {
-        playerShooter.SetRigidBody(rigidBody);
+       
       
         animator.SetTrigger("spin");
 
