@@ -25,7 +25,7 @@ public class BlobHandler : MonoBehaviour
 
     void Start()
     {
-        isFollowing = false;
+        
     }
 
 
@@ -33,7 +33,7 @@ public class BlobHandler : MonoBehaviour
     //Called when the user collects the blob
     public void StartFollowing()
     {
-        isFollowing = true;
+    
     }
 
 
@@ -41,6 +41,7 @@ public class BlobHandler : MonoBehaviour
     //Called when the user clicks on the blob
     private void OnMouseDown()
     {
+        Debug.Log("CLICKED");
 
         myCollider.enabled = false;
         transform.DOMove(mergePos.position, timeToMergePos, false).SetEase(moveToMergePos).OnComplete(() =>

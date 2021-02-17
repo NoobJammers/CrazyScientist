@@ -56,7 +56,7 @@ namespace Platformer.Mechanics
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
-//            initpos = followObject.transform.localPosition;
+            initpos = followObject.transform.localPosition;
         }
         protected override void OnEnable()
         {
@@ -67,11 +67,12 @@ namespace Platformer.Mechanics
                 Physics2D.IgnoreCollision(obj.GetComponent<Collider2D>(), GetComponent<Collider2D>());
             }*/
             base.OnEnable();
-            // a.Add();
-            // c.Add();
-            // b.Add();
-       
-            // d.Add();
+             a.Add();
+            b.Add();
+            /*c.Add();
+          
+
+            d.Add();*/
 
         }
         protected override void Update()
@@ -147,17 +148,17 @@ namespace Platformer.Mechanics
                 if (flipBool != false)
                     TrainMove.flip();
                 flipBool = false;
-                //followObject.transform.localPosition =new Vector3(-1*initpos.x,initpos.y,initpos.z);
-             
-               
+                followObject.transform.localPosition = new Vector3(-1 * initpos.x, initpos.y, initpos.z);
+
+
             }
             else if (move.x < -0.01f)
             { spriteRenderer.flipX = true;
                 if (flipBool != true)
                     TrainMove.flip();
                 flipBool = true;
-                //followObject.transform.localPosition = 1*initpos;
-             
+                followObject.transform.localPosition = 1 * initpos;
+
             }
 
             animator.SetBool("grounded", IsGrounded);

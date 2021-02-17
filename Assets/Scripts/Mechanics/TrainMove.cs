@@ -38,24 +38,26 @@ public class TrainMove : MonoBehaviour
 
     public static void flip()
     {
-     /*   var temphead = Head;*/
-        // FollowedBy first = null;
-        // List<FollowedBy> list = new List<FollowedBy>();
-        // var temp = Head.followedby;
-        // while(temp.followedby!=null)
-        // {
-        //     list.Add(temp);
-        //     temp = temp.followedby;
-        // }
-        // first = temp;
+        var temphead = Head;
+        FollowedBy first = null;
+        List<FollowedBy> list = new List<FollowedBy>();
+        var temp = Head.followedby;
 
-        // for(int i=list.Count-1;i>=0;i--)
-        // {
-        //     temp.followedby = list[i];
-        //     temp = temp.followedby;
-        // }
-        // temp.followedby = null;
-        // Head.followedby = first;
+        
+        while (temp.followedby != null)
+        {
+            list.Add(temp);
+            temp = temp.followedby;
+        }
+        first = temp;
+
+        for (int i = list.Count - 1; i >= 0; i--)
+        {
+            temp.followedby = list[i];
+            temp = temp.followedby;
+        }
+        temp.followedby = null;
+        Head.followedby = first;
 
     }
 }
