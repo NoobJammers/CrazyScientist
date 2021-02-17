@@ -9,7 +9,7 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] Rigidbody2D hook;
     [SerializeField] GameObject trajectoryBlob;
     [SerializeField] float impulseForce;
-    public float releaseTime = .15f;
+    public float releaseTime = 0.15f;
     public float maxDragDistance = 2f;
 
 
@@ -25,17 +25,16 @@ public class PlayerShooter : MonoBehaviour
     {
 
 
-        if (Input.GetKeyDown(KeyCode.Q))
+     /*   if (rigidBody!=null&&Input.GetMouseButtonDown(0) && (Camera.main.ScreenToWorldPoint(Input.mousePosition)-transform.position).magnitude>1)
         {
-            if (Time.timeScale == 1f)
-            {
-                Time.timeScale = 0f;
-            }
-            else
-            {
-                Time.timeScale = 1f;
-            }
-        }
+            rigidBody.drag = 19.71f;
+            rigidBody.angularDrag = 4.25f;
+            isPressed = false;
+            rigidBody.GetComponent<SpringJoint2D>().enabled = false;
+            rigidBody.isKinematic = false;
+            TrainMove.ExtendTrain(rigidBody.GetComponent<FollowedBy>());
+            rigidBody = null;
+        }*/
         if (isPressed)
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -93,7 +92,7 @@ public class PlayerShooter : MonoBehaviour
     {
         if (hasHoveringBlob)
         {
-           rigidBody.GetComponent<Collider2D>().enabled = false;
+            rigidBody.GetComponent<Collider2D>().enabled = false;
             isPressed = true;
             rigidBody.isKinematic = true;
             rigidBody.GetComponent<SpringJoint2D>().enabled = true;
@@ -106,22 +105,28 @@ public class PlayerShooter : MonoBehaviour
         if (hasHoveringBlob)
         {
             isPressed = false;
-            rigidBody.isKinematic = false;
+          
             rigidBody.drag = 0;
             rigidBody.angularDrag = 0;
-            rigidBody.GetComponent<Collider2D>().enabled = true;
+            rigidBody.isKinematic = false;
+            
             hasHoveringBlob = false;
+           
             StartCoroutine(Release());
         }
     }
     IEnumerator Release()
     {
         yield return new WaitForSeconds(releaseTime);
-
         rigidBody.GetComponent<SpringJoint2D>().enabled = false;
+        yield return new WaitForSeconds(0.12f);
+        rigidBody.GetComponent<Collider2D>().enabled = true;
+        
+
+     
         // this.enabled = false;
-/*
-        yield return new WaitForSeconds(2f);*/
+        /*
+                yield return new WaitForSeconds(2f);*/
 
 
 
