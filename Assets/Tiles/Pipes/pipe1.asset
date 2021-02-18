@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: pipe1
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: f387757bded23424ab0d0357f49b25ae, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.68235296}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0
