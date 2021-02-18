@@ -134,6 +134,7 @@ public class PlayerShooter : MonoBehaviour
             hasHoveringBlob = false;
             rigidBody.GetComponent<BlobHandler>().held = false;
             StartCoroutine(Release());
+            rigidBody.GetComponent<BlobHandler>().released = true;
         }
     }
     IEnumerator Release()

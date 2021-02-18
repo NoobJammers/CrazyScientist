@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6047164886702685393}
   - component: {fileID: 9049663072772582418}
   - component: {fileID: 2754378049921272651}
+  - component: {fileID: 8584592315391815640}
   - component: {fileID: 8584253972455067979}
   - component: {fileID: 8584253972455067978}
   - component: {fileID: 867716661}
@@ -277,6 +278,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8584592315391815640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6931366876161887421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 641d2ff2d449efb47a94bad2adc57e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!231 &8584253972455067979
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -311,6 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mergePos: {fileID: 0}
   moveToMergePos: 0
+  held: 0
 --- !u!114 &867716661
 MonoBehaviour:
   m_ObjectHideFlags: 0

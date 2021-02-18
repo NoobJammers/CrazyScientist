@@ -16,7 +16,7 @@ public class BlobHandler : MonoBehaviour
     public bool held = false;
     public bool isFollowing { get; private set; }   //Is following the user?
 
-
+    public bool released = false;
 
 
 

@@ -17,8 +17,21 @@ public class ExplosionObjectEffect : MonoBehaviour
         {
             rigid.isKinematic = false;
             rigid.AddForce((-collider.attachedRigidbody.position + rigid.position) * ForceMultiplier, ForceMode2D.Impulse);
-            if(vanishingdoor)
-            StartCoroutine( Delay(dissapearaftertime, () => { StartCoroutine(FadeAndDestroy(rigid.GetComponent<SpriteRenderer>(), dissappearingtime)); }));
+           
+            if (vanishingdoor )
+            StartCoroutine( Delay(dissapearaftertime, () =>
+            {
+                rigid.GetComponent<Collider2D>().enabled = false;
+                if (rigid)
+                { StartCoroutine(
+
+
+                    FadeAndDestroy(
+
+                    rigid.GetComponent<SpriteRenderer>(), dissappearingtime)
+
+                    );
+            } }));
         }
     }
 
