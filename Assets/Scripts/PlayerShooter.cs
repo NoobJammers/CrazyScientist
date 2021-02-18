@@ -84,7 +84,20 @@ public class PlayerShooter : MonoBehaviour
 
 
     public void SetRigidBody(Rigidbody2D rb)
-    {
+    {if(rigidBody!=null)
+        {
+            rigidBody.drag = 19.71f;
+            rigidBody.angularDrag = 4.25f;
+            isPressed = false;
+            rigidBody.GetComponent<SpringJoint2D>().enabled = false;
+            rigidBody.isKinematic = false;
+            TrainMove.ExtendTrain(rigidBody.GetComponent<FollowedBy>());
+            hasHoveringBlob = false;
+            GetComponent<FollowedBy>().followedby = null;
+            rigidBody = null;
+        }
+
+       GetComponent<FollowedBy>().followedby = rb.GetComponent<FollowedBy>();
         rigidBody = rb;
      /*   rigidBody.transform.SetParent(gameObject.transform,true);*/
         hasHoveringBlob = true;
