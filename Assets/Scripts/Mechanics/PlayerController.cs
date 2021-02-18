@@ -186,15 +186,5 @@ namespace Platformer.Mechanics
         }
 
 
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.tag == "Blob")
-            {
-                if (!other.GetComponent<BlobHandler>().isFollowing)
-                {
-                    other.GetComponent<BlobHandler>().StartFollowing();
-                }
-            }
-        }
     }
 }

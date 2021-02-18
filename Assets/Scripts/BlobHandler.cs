@@ -13,7 +13,7 @@ public class BlobHandler : MonoBehaviour
     [SerializeField] Transform mergePos; //Position above player's head
    private PlayerShooter playerShooter;
     [SerializeField] Ease moveToMergePos;
-    private bool clicked = false;
+    public bool held = false;
     public bool isFollowing { get; private set; }   //Is following the user?
 
 
@@ -35,10 +35,6 @@ public class BlobHandler : MonoBehaviour
 
 
     //Called when the user collects the blob
-    public void StartFollowing()
-    {
-    
-    }
 
 
 
@@ -54,8 +50,7 @@ public class BlobHandler : MonoBehaviour
         rigid.drag = 10;
         rigid.angularDrag = 3;
       
-
-        mergePos.GetComponent<FollowedBy>().followedby = GetComponent<FollowedBy>();
+    
 
         playerShooter.SetRigidBody(rigidBody);
         /*  rigid.isKinematic = true;*/

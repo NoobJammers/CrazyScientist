@@ -36,7 +36,9 @@ public class PlayerShooter : MonoBehaviour
             TrainMove.ExtendTrain(rigidBody.GetComponent<FollowedBy>());
             hasHoveringBlob = false;
             GetComponent<FollowedBy>().followedby = null;
+            rigidBody.GetComponent<BlobHandler>().held = false;
             rigidBody = null;
+          
         }
         if (isPressed)
         {
@@ -94,13 +96,16 @@ public class PlayerShooter : MonoBehaviour
             TrainMove.ExtendTrain(rigidBody.GetComponent<FollowedBy>());
             hasHoveringBlob = false;
             GetComponent<FollowedBy>().followedby = null;
+            rigidBody.GetComponent<BlobHandler>().held = false;
             rigidBody = null;
+       
         }
 
        GetComponent<FollowedBy>().followedby = rb.GetComponent<FollowedBy>();
         rigidBody = rb;
-     /*   rigidBody.transform.SetParent(gameObject.transform,true);*/
+        /*   rigidBody.transform.SetParent(gameObject.transform,true);*/
         hasHoveringBlob = true;
+        rigidBody.GetComponent<BlobHandler>().held = true;
 
     }
 
@@ -127,7 +132,7 @@ public class PlayerShooter : MonoBehaviour
             rigidBody.isKinematic = false;
             
             hasHoveringBlob = false;
-           
+            rigidBody.GetComponent<BlobHandler>().held = false;
             StartCoroutine(Release());
         }
     }
