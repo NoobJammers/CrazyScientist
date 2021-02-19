@@ -9,7 +9,7 @@ public class WaterBlobController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (GetComponent<BlobHandler>().released && !exploded)
+        if (GetComponent<BlobHandler>().released && !exploded && !StickyBlobController.InStickyRegion(gameObject))
         {
             gameObject.GetComponent<SpriteRenderer>().color = new Color32(0, 0, 0, 0);
             transform.GetChild(0).gameObject.SetActive(true);
@@ -19,4 +19,5 @@ public class WaterBlobController : MonoBehaviour
 
         }
     }
+
 }
