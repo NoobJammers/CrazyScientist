@@ -27,12 +27,15 @@ public class TrainMove : MonoBehaviour
 
         else
         { var temp = Head.followedby;
+            if (temp == leader)
+                return;
             /*while (temp.followedby!=null)
             {
                 temp = temp.followedby;
             }*/
             leader.followedby = temp;
             Head.followedby = leader;
+            Debug.Log("Extend train");
         }
     }
 
@@ -48,6 +51,7 @@ public class TrainMove : MonoBehaviour
         while (temp.followedby != null)
         {
             list.Add(temp);
+            Debug.Log("flipping");
             temp = temp.followedby;
         }
         first = temp;
@@ -76,5 +80,19 @@ public class TrainMove : MonoBehaviour
             }
             temp = temp.followedby;
         }
+    }
+    public static bool PartOfTrain(FollowedBy followedby)
+    {
+        var temp = Head;
+
+        while (temp != null)
+        {
+            if (temp.followedby == followedby)
+            {
+                return true;
+            }
+            temp = temp.followedby;
+        }
+        return false;
     }
 }

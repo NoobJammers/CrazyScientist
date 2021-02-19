@@ -15,7 +15,7 @@ public class PlayerShooter : MonoBehaviour
 
     bool isPressed = false, hasHoveringBlob = false;
     float timeInterval = 1f;
-
+    float timebwclicks = 0;
     void Start()
     {
 
@@ -24,9 +24,27 @@ public class PlayerShooter : MonoBehaviour
     void Update()
     {
 
-
+        
         //To detect if clicked outside
-        if (rigidBody != null &&!isPressed &&Input.GetMouseButtonUp(0) && (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).magnitude > 1 && (transform.position-rigidBody.transform.position).magnitude<0.5f)
+        if (rigidBody != null &&!isPressed &&Input.GetMouseButtonDown(0) && (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).magnitude > 1 && (transform.position-rigidBody.transform.position).magnitude<0.5f && Time.time-timebwclicks>0.20f)
+        {
+            Debug.Log("called");
+            timebwclicks = Time.time;
+
+            rigidBody.drag = 19.71f;
+            rigidBody.angularDrag = 4.25f;
+            isPressed = false;
+            GetComponent<FollowedBy>().followedby = null;
+            rigidBody.GetComponent<SpringJoint2D>().enabled = false;
+            rigidBody.isKinematic = false;
+            TrainMove.ExtendTrain(rigidBody.GetComponent<FollowedBy>());
+            hasHoveringBlob = false;
+         
+            rigidBody.GetComponent<BlobHandler>().held = false;
+            rigidBody = null;
+          
+        }
+    /*    if(rigidBody!=null && TrainMove.PartOfTrain(rigidBody.GetComponentInChildren<FollowedBy>()))
         {
             rigidBody.drag = 19.71f;
             rigidBody.angularDrag = 4.25f;
@@ -38,8 +56,8 @@ public class PlayerShooter : MonoBehaviour
             GetComponent<FollowedBy>().followedby = null;
             rigidBody.GetComponent<BlobHandler>().held = false;
             rigidBody = null;
-          
-        }
+        }*/
+
         if (isPressed)
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
