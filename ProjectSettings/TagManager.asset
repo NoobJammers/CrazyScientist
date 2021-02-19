@@ -52,7 +52,7 @@ TagManager:
   - name: Background2
     uniqueID: 2344118779
     locked: 0
-  - name: Bacground
+  - name: Background
     uniqueID: 3405993979
     locked: 0
   - name: Level
@@ -63,4 +63,7 @@ TagManager:
     locked: 0
   - name: Characters
     uniqueID: 390492973
+    locked: 0
+  - name: ParticleEffect
+    uniqueID: 4174202347
     locked: 0
