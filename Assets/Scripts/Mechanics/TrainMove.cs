@@ -44,7 +44,7 @@ public class TrainMove : MonoBehaviour
         var temp = Head.followedby;
         if (temp == null)
             return;
-        
+
         while (temp.followedby != null)
         {
             list.Add(temp);
