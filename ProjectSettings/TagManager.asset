@@ -9,6 +9,8 @@ TagManager:
   - player
   - Blob
   - FxTemporaire
+  - ExplodingBlob
+  - StickyExplodingBob
   layers:
   - Default
   - TransparentFX

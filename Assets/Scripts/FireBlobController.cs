@@ -19,20 +19,16 @@ public class FireBlobController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(GetComponent<BlobHandler>().released && !exploded)
+        if(GetComponent<BlobHandler>().released && !exploded && !StickyBlobController.InStickyRegion(gameObject))
         {
             gameObject.GetComponent<SpriteRenderer>().color = new Color32(0, 0, 0, 0);
             transform.GetChild(0).gameObject.SetActive(true);
             transform.GetChild(0).parent = null;
             exploded = true;
-            StartCoroutine(Delay(1f, () => { Destroy(gameObject); }));
+            Destroy(gameObject, 1);
 
          /*   Destroy(gameObject);*/
         }
     }
-    public IEnumerator Delay(float delayby, Action a)
-    {
-        yield return new WaitForSecondsRealtime(delayby);
-        a.Invoke();
-    }
+  
 }
