@@ -41,8 +41,9 @@ public class StickyBlobController : MonoBehaviour
     {
         foreach(Vector3 spots in StickySpots)
         {
-            if((gameObject.transform.position-spots).magnitude<=3)
+            if((gameObject.transform.position-spots).magnitude<=2)
             {
+                gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
                 gameObject.transform.GetChild(1).gameObject.SetActive(true);
                 return true;

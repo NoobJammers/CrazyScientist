@@ -26,11 +26,11 @@ public class PlayerShooter : MonoBehaviour
 
         
         //To detect if clicked outside
-        if (rigidBody != null &&!isPressed &&Input.GetMouseButtonDown(0) && (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).magnitude > 1 && (transform.position-rigidBody.transform.position).magnitude<0.5f && Time.time-timebwclicks>0.20f)
+        if (rigidBody != null &&!isPressed &&Input.GetMouseButtonDown(0) && (new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y) - new Vector2(transform.position.x,transform.position.y)).magnitude > 1 && (transform.position-rigidBody.transform.position).magnitude<0.5f && Time.time-timebwclicks>0.5f)
         {
             Debug.Log("called");
             timebwclicks = Time.time;
-
+            Debug.Log("asdasd0");
             rigidBody.drag = 19.71f;
             rigidBody.angularDrag = 4.25f;
             isPressed = false;

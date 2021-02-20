@@ -41,18 +41,19 @@ public class BlobHandler : MonoBehaviour
     //Called when the user clicks on the blob
     private void OnMouseDown()
     {
-        
-            TrainMove.RemoveCarriage(GetComponent<FollowedBy>());
-            
-            
-            Debug.Log("CLICKED");
-        Rigidbody2D rigid = GetComponent<Rigidbody2D>();
-        rigid.drag = 10;
-        rigid.angularDrag = 3;
-      
-    
 
-        playerShooter.SetRigidBody(rigidBody);
+        if (!held)
+        {
+            TrainMove.RemoveCarriage(GetComponent<FollowedBy>());
+            Debug.Log("CLICKED");
+            Rigidbody2D rigid = GetComponent<Rigidbody2D>();
+            rigid.drag = 10;
+            rigid.angularDrag = 3;
+
+
+
+            playerShooter.SetRigidBody(rigidBody);
+        }
         /*  rigid.isKinematic = true;*/
         /*rigid.GetComponent<SpringJoint2D>().enabled = true;*/
 

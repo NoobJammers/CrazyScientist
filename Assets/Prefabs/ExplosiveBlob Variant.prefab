@@ -236,6 +236,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExplosiveBlob
       objectReference: {fileID: 0}
+    - target: {fileID: 6931366876161887421, guid: c94adfd08f8beaa48adb4899d61d2d68,
+        type: 3}
+      propertyPath: m_TagString
+      value: ExplodingBlob
+      objectReference: {fileID: 0}
     - target: {fileID: 7116818387379843957, guid: c94adfd08f8beaa48adb4899d61d2d68,
         type: 3}
       propertyPath: m_SortingOrder
