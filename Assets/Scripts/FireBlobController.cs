@@ -8,18 +8,19 @@ public class FireBlobController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(GetComponent<BlobHandler>().released && !exploded && !StickyBlobController.InStickyRegion(gameObject))
+
+        if (GetComponent<BlobHandler>().released && !exploded && !StickyBlobController.InStickyRegion(gameObject, 1))
         {
             gameObject.GetComponent<SpriteRenderer>().color = new Color32(0, 0, 0, 0);
             transform.GetChild(0).gameObject.SetActive(true);
@@ -27,8 +28,9 @@ public class FireBlobController : MonoBehaviour
             exploded = true;
             Destroy(gameObject, 1);
 
-         /*   Destroy(gameObject);*/
+            /*   Destroy(gameObject);*/
+
         }
     }
-  
+
 }

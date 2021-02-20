@@ -10,7 +10,7 @@ public class ExplosionReporter : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "ExplodingBlob" && !StickyBlobController.InStickyRegion(collision.collider.gameObject))
-            GetComponentInParent<ExplosionObjectEffect>().ApplyForceOnChildren(collision.collider);
+        // if (collision.collider.tag == "ExplodingBlob" && !StickyBlobController.InStickyRegion(collision.collider.gameObject))
+        //     GetComponentInParent<ExplosionObjectEffect>().ApplyForceOnChildren(collision.collider);
     }
 }
