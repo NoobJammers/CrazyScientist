@@ -8,9 +8,19 @@ public class ExplosionReporter : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().isKinematic = true;
     }
+
+
+
+    public void TellDaddyImHurt(Collider2D collider)
+    {
+        GetComponentInParent<ExplosionObjectEffect>().ApplyForceOnChildren(collider);
+    }
+
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // if (collision.collider.tag == "ExplodingBlob" && !StickyBlobController.InStickyRegion(collision.collider.gameObject))
+        // if (collision.gameObject.GetComponent<FireBlobController>() &&  !StickyBlobController.InStickyRegion(collision.collider.gameObject, 0))
         //     GetComponentInParent<ExplosionObjectEffect>().ApplyForceOnChildren(collision.collider);
     }
 }

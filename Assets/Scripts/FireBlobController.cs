@@ -22,6 +22,11 @@ public class FireBlobController : MonoBehaviour
 
         if (GetComponent<BlobHandler>().released && !exploded && !StickyBlobController.InStickyRegion(gameObject, 1))
         {
+            if (collision.gameObject.GetComponent<ExplosionReporter>())
+            {
+                collision.gameObject.GetComponent<ExplosionReporter>().TellDaddyImHurt(GetComponent<Collider2D>());
+
+            }
             gameObject.GetComponent<SpriteRenderer>().color = new Color32(0, 0, 0, 0);
             transform.GetChild(0).gameObject.SetActive(true);
             transform.GetChild(0).parent = null;
