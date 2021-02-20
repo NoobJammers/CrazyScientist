@@ -11,6 +11,8 @@ TagManager:
   - FxTemporaire
   - ExplodingBlob
   - StickyExplodingBob
+  - Metaball_liquid
+  - BabyBlob
   layers:
   - Default
   - TransparentFX

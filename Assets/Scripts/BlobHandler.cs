@@ -7,11 +7,11 @@ public class BlobHandler : MonoBehaviour
 {
 
 
-   private Rigidbody2D rigidBody;
-   private Collider2D myCollider;
-   private Animator animator;
-    [SerializeField] Transform mergePos; //Position above player's head
-   private PlayerShooter playerShooter;
+    private Rigidbody2D rigidBody;
+    private Collider2D myCollider;
+    private Animator animator;
+    public Transform mergePos; //Position above player's head
+    private PlayerShooter playerShooter;
     [SerializeField] Ease moveToMergePos;
     public bool held = false;
     public bool isFollowing { get; private set; }   //Is following the user?
@@ -42,6 +42,27 @@ public class BlobHandler : MonoBehaviour
     private void OnMouseDown()
     {
 
+        Clicked();
+        /*  rigid.isKinematic = true;*/
+        /*rigid.GetComponent<SpringJoint2D>().enabled = true;*/
+
+
+        /*rigid.GetComponent<SpringJoint2D>().enabled = true;*/
+        /*  transform.DOMove(mergePos.position, timeToMergePos, false).SetEase(moveToMergePos).OnComplete(() =>
+          {
+
+              //animator.SetTrigger("spin");
+              KickStartBlobRotate();
+      });*/
+        /*  StartCoroutine();*/
+
+
+    }
+
+
+
+    public void Clicked()
+    {
         if (!held)
         {
             TrainMove.RemoveCarriage(GetComponent<FollowedBy>());
@@ -54,29 +75,15 @@ public class BlobHandler : MonoBehaviour
 
             playerShooter.SetRigidBody(rigidBody);
         }
-        /*  rigid.isKinematic = true;*/
-        /*rigid.GetComponent<SpringJoint2D>().enabled = true;*/
-
-     
-        /*rigid.GetComponent<SpringJoint2D>().enabled = true;*/
-        /*  transform.DOMove(mergePos.position, timeToMergePos, false).SetEase(moveToMergePos).OnComplete(() =>
-          {
-
-              //animator.SetTrigger("spin");
-              KickStartBlobRotate();
-      });*/
-        /*  StartCoroutine();*/
-
-
-
-
-
-
     }
-   void KickStartBlobRotate()
+
+
+
+
+    void KickStartBlobRotate()
     {
-       
-      
+
+
         animator.SetTrigger("spin");
 
     }
