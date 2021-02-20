@@ -5,7 +5,7 @@ using Platformer.Gameplay;
 using static Platformer.Core.Simulation;
 using Platformer.Model;
 using Platformer.Core;
-
+using DG.Tweening;
 namespace Platformer.Mechanics
 {
     /// <summary>
@@ -66,6 +66,15 @@ namespace Platformer.Mechanics
          
 
         }
+        protected override void Start()
+        {
+            base.Start();
+            GameObject gameobj = GameObject.Find("Barrier");
+            gameobj.transform.position = new Vector3(transform.position.x - 2, transform.position.y - 7, transform.position.z);
+            GameObject.Find("Barrier").transform.DOMoveY(transform.position.y +10, 3);
+        }
+
+       
         protected override void Update()
         {
             if (controlEnabled)
