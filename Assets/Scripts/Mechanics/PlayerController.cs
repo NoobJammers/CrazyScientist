@@ -49,6 +49,11 @@ namespace Platformer.Mechanics
 
         public Bounds Bounds => collider2d.bounds;
 
+
+        int stickyBabyCount = 0, fireBabyCount = 0, waterBabyCount = 0;
+        int maxBabyCount = 5;
+        [SerializeField] GameObject stickyBlobPrefab, fireBlobPrefab, waterBlobPrefab;
+        [SerializeField] GameObject poof, magicPoof;
         void Awake()
         {
             health = GetComponent<Health>();
@@ -60,10 +65,10 @@ namespace Platformer.Mechanics
         }
         protected override void OnEnable()
         {
-           
+
             base.OnEnable();
             TrainMove.ExtendTrain(followObject.GetComponent<FollowedBy>());
-         
+
 
         }
         protected override void Start()
@@ -153,7 +158,8 @@ namespace Platformer.Mechanics
 
             }
             else if (move.x < -0.01f)
-            { spriteRenderer.flipX = true;
+            {
+                spriteRenderer.flipX = true;
                 if (flipBool != true)
                     TrainMove.flip();
                 flipBool = true;
@@ -182,7 +188,7 @@ namespace Platformer.Mechanics
                 Physics2D.IgnoreCollision(collision.collider, collider2d);
                 Debug.Log("collision happenibg");
             }*/
-         
+
         }
         private void OnCollisionStay2D(Collision2D collision)
         {
@@ -191,9 +197,69 @@ namespace Platformer.Mechanics
                 Physics2D.IgnoreCollision(collision.collider, collider2d);
                 Debug.Log("collision happenibg stay");
             }*/
-       
-        }
 
+        }
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.tag == "BabyBlob")
+            {
+
+                int temp = other.GetComponent<BabyBlobHandler>().id;
+                switch (temp)
+                {
+                    case 0:
+                        stickyBabyCount++;
+                        if (stickyBabyCount >= maxBabyCount)
+                        {
+                            stickyBabyCount = 0;
+                            GameObject go = Instantiate(stickyBlobPrefab, other.transform.position, Quaternion.identity);
+                            go.GetComponent<BlobHandler>().mergePos = transform.GetChild(0);
+                            go.GetComponent<SpringJoint2D>().connectedBody = transform.GetChild(0).GetComponent<Rigidbody2D>();
+                            TrainMove.ExtendTrain(go.GetComponent<FollowedBy>());
+                            Instantiate(magicPoof, other.transform.position, Quaternion.identity);
+                        }
+                        else
+                        {
+                            Instantiate(poof, other.transform.position, Quaternion.identity);
+                        }
+                        break;
+                    case 1:
+                        fireBabyCount++;
+                        if (fireBabyCount >= maxBabyCount)
+                        {
+                            fireBabyCount = 0;
+                            GameObject go = Instantiate(fireBlobPrefab, other.transform.position, Quaternion.identity);
+                            go.GetComponent<BlobHandler>().mergePos = transform.GetChild(0);
+                            go.GetComponent<SpringJoint2D>().connectedBody = transform.GetChild(0).GetComponent<Rigidbody2D>();
+                            TrainMove.ExtendTrain(go.GetComponent<FollowedBy>());
+                            Instantiate(magicPoof, other.transform.position, Quaternion.identity);
+                        }
+                        else
+                        {
+                            Instantiate(poof, other.transform.position, Quaternion.identity);
+                        }
+                        break;
+                    default:
+                        waterBabyCount++;
+                        if (waterBabyCount >= maxBabyCount)
+                        {
+                            waterBabyCount = 0;
+                            GameObject go = Instantiate(waterBlobPrefab, other.transform.position, Quaternion.identity);
+                            go.GetComponent<BlobHandler>().mergePos = transform.GetChild(0);
+                            go.GetComponent<SpringJoint2D>().connectedBody = transform.GetChild(0).GetComponent<Rigidbody2D>();
+                            TrainMove.ExtendTrain(go.GetComponent<FollowedBy>());
+                            Instantiate(magicPoof, other.transform.position, Quaternion.identity);
+                        }
+                        else
+                        {
+                            Instantiate(poof, other.transform.position, Quaternion.identity);
+                        }
+                        break;
+                }
+
+                Destroy(other.gameObject);
+            }
+        }
 
     }
 }
