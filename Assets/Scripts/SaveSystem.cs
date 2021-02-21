@@ -19,7 +19,7 @@ public class SaveSystem : MonoBehaviour
 
     }
     //replace with the first position that player needs to spawn at
-    public static Vector3 recentlyactivatedposition = new Vector3(9, 0.04f, 0);
+    public static Vector3 recentlyactivatedposition = new Vector3(-4, -14.7f, 0);
 
 
 
