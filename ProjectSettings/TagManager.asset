@@ -73,3 +73,6 @@ TagManager:
   - name: ParticleEffect
     uniqueID: 4174202347
     locked: 0
+  - name: text
+    uniqueID: 749017585
+    locked: 0
