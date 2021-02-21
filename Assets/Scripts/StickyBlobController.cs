@@ -6,6 +6,8 @@ using System;
 public class StickyBlobController : MonoBehaviour
 {
     public static Action<Vector3> explodedHere;
+
+    public static Action<Vector3> smokehere;
     [System.Serializable]
     public class StickySpot
     {
