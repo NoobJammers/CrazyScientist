@@ -74,7 +74,7 @@ namespace Platformer.Mechanics
             GameObject gameobj = GameObject.Find("Barrier");
             if (gameobj)
             {
-                gameobj.transform.position = new Vector3(transform.position.x - 2, transform.position.y - 7, transform.position.z);
+                gameobj.transform.position = new Vector3(transform.position.x - 7, transform.position.y - 7, transform.position.z);
                 GameObject.Find("Barrier").transform.DOMoveY(transform.position.y + 10, 3);
             }
         }
