@@ -131,6 +131,11 @@ public class CrazyEnemyController : MonoBehaviour
             }
 
         }
+        if(collision.gameObject.GetComponent<FireBlobController>()!=null)
+
+        {
+
+        }
      /*   GetComponent<Rigidbody2D>().isKinematic = true;*/
         patrolling = true;
     }
