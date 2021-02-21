@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1278596957
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 680430fd0e444f546a41d4b8c6280f6d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -215,8 +215,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1278596957
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0e5c5ebe0480b2d45b373080037a03bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -359,8 +359,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1278596957
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 57ffa1b980f38b34ab1c7234e18ca08d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -503,8 +503,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1278596957
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4a824e2e70e232640b110642b8ea55f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -647,8 +647,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1278596957
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bb8e431ed4f56b44c9060c4cf517d7f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -746,7 +746,7 @@ Transform:
   m_GameObject: {fileID: 6636789284054499512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.82329, y: -4.2466187, z: -1.0995039}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1.26, y: 1.07, z: 0.5}
   m_Children:
   - {fileID: 3885215344636350422}
   - {fileID: 6742807081081971565}
@@ -768,7 +768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9574705b9b7cd3f43b16edc3b704d1c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ForceMultiplier: 700
+  ForceMultiplier: 2500
   dissapearaftertime: 0.3
   dissappearingtime: 0.5
   vanishingdoor: 1

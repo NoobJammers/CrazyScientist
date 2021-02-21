@@ -26,6 +26,7 @@ public class CrazyEnemyController : MonoBehaviour
         StartCoroutine(Patrol());
         StartCoroutine(CheckForAttack());
         FireBlobController.explodedHere += FireBlobExplodedNearby;
+        StickyBlobController.explodedHere += StickyExploded;
        
     }
 
@@ -36,6 +37,17 @@ public class CrazyEnemyController : MonoBehaviour
             GetComponent<Rigidbody2D>().AddForce((transform.up) * 10, ForceMode2D.Impulse);
             Destroy(gameObject, 0.2f);
             animator.SetBool("death", true);
+        }
+    }
+    public void StickyExploded(Vector3 pointofimpact)
+    {
+        if ((new Vector2(pointofimpact.x, pointofimpact.y) - new Vector2(transform.position.x, transform.position.y)).magnitude <= distFromFire )
+        {
+            GetComponent<Rigidbody2D>().AddForce((pointofimpact-transform.position) , ForceMode2D.Impulse);
+            StopAllCoroutines();
+
+          /*  Destroy(gameObject, 0.2f);
+            animator.SetBool("death", true);*/
         }
     }
 
@@ -156,6 +168,14 @@ public class CrazyEnemyController : MonoBehaviour
         {
             transform.GetChild(0).gameObject.SetActive(false);
             OnFire = false;
+        }
+
+
+        if (collision.gameObject.GetComponent<StickyBlobController>() != null)
+
+        {
+            GetComponent<Rigidbody2D>().AddForce((collision.gameObject.transform.position - transform.position), ForceMode2D.Impulse);
+            StopAllCoroutines();
         }
         /*   GetComponent<Rigidbody2D>().isKinematic = true;*/
         patrolling = true;

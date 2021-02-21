@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
+using System;
 public class StickyBlobController : MonoBehaviour
 {
+    public static Action<Vector3> explodedHere;
     [System.Serializable]
     public class StickySpot
     {
@@ -34,6 +35,7 @@ public class StickyBlobController : MonoBehaviour
             transform.GetChild(0).parent = null;
             transform.GetChild(0).parent = null;
             exploded = true;
+            explodedHere.Invoke(transform.position);
             Destroy(gameObject, 1);
 
 
