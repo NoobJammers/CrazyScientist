@@ -439,8 +439,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 390492973
+  m_SortingLayer: 6
   m_SortingOrder: 6
   m_Sprite: {fileID: -2413806693520163455, guid: 80b2916b480a4cf418fd06fc6071afa5,
     type: 3}
@@ -504,7 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hook: {fileID: 9129943469927009130}
-  trajectoryBlob: {fileID: 8098117517317308085, guid: ce13c1e638909fb4e996232b1d1ec4f0,
+  trajectoryBlob: {fileID: 5106273945927808424, guid: 69be9457d0d2562488acc3aa68f204e4,
     type: 3}
   impulseForce: 8
   releaseTime: 0.15
