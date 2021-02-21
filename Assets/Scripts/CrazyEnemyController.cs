@@ -16,6 +16,7 @@ public class CrazyEnemyController : MonoBehaviour
     private Transform player;
     private string[] attackdontarray ;
     private Animator animator;
+    public float smokeforce = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,7 @@ public class CrazyEnemyController : MonoBehaviour
         StartCoroutine(CheckForAttack());
         FireBlobController.explodedHere += FireBlobExplodedNearby;
         StickyBlobController.explodedHere += StickyExploded;
-       
+    /*    StickyBlobController.smokehere += SmokeDetected;*/
     }
 
     public void FireBlobExplodedNearby(Vector3 pointofimpact)
@@ -37,6 +38,28 @@ public class CrazyEnemyController : MonoBehaviour
             GetComponent<Rigidbody2D>().AddForce((transform.up) * 10, ForceMode2D.Impulse);
             Destroy(gameObject, 0.2f);
             animator.SetBool("death", true);
+        }
+    }
+    public void SmokeDetected(Vector3 point)
+    {
+        StartCoroutine(BlowSmoke(point));
+    }
+
+    IEnumerator BlowSmoke(Vector3 pointofimpact)
+    {
+        StopAllCoroutines();
+        float timestart=Time.time;
+        if ((new Vector2(pointofimpact.x, pointofimpact.y) - new Vector2(transform.position.x, transform.position.y)).magnitude <= distFromFire)
+        {
+
+            while (Time.time - timestart <= 20)
+            { GetComponent<Rigidbody2D>().AddForce((-pointofimpact +transform.position)*smokeforce, ForceMode2D.Force);
+                yield return null;
+            }
+           
+
+            /*  Destroy(gameObject, 0.2f);
+              animator.SetBool("death", true);*/
         }
     }
     public void StickyExploded(Vector3 pointofimpact)
@@ -174,7 +197,7 @@ public class CrazyEnemyController : MonoBehaviour
         if (collision.gameObject.GetComponent<StickyBlobController>() != null)
 
         {
-            GetComponent<Rigidbody2D>().AddForce((collision.gameObject.transform.position - transform.position), ForceMode2D.Impulse);
+            GetComponent<Rigidbody2D>().AddForce((-collision.gameObject.transform.position + transform.position), ForceMode2D.Impulse);
             StopAllCoroutines();
         }
         /*   GetComponent<Rigidbody2D>().isKinematic = true;*/
