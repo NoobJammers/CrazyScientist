@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 public class FireBlobController : MonoBehaviour
 {
+    public static Action<Vector3> explodedHere;
     public bool exploded = false;
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class FireBlobController : MonoBehaviour
             transform.GetChild(0).gameObject.SetActive(true);
             transform.GetChild(0).parent = null;
             exploded = true;
+            explodedHere.Invoke(transform.position);
             Destroy(gameObject, 1);
 
             /*   Destroy(gameObject);*/

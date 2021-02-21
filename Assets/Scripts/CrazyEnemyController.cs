@@ -8,6 +8,7 @@ public class CrazyEnemyController : MonoBehaviour
     public float probabilitytoattack=0.2f;
     public float HowFarPlayer = 2;
     public float forcemultiplier = 1;
+    public float distFromFire = 0.2f;
     public int secondstocheckin=1;
     public bool OnFire;
     public float maxdistToCover=2;
@@ -24,7 +25,18 @@ public class CrazyEnemyController : MonoBehaviour
         MakeProbabilityList();
         StartCoroutine(Patrol());
         StartCoroutine(CheckForAttack());
+        FireBlobController.explodedHere += FireBlobExplodedNearby;
        
+    }
+
+    public void FireBlobExplodedNearby(Vector3 pointofimpact)
+    {
+        if((new Vector2(pointofimpact.x,pointofimpact.y)-new Vector2(transform.position.x,transform.position.y)).magnitude<=distFromFire&&!OnFire)
+        {
+            GetComponent<Rigidbody2D>().AddForce((transform.up) * 10, ForceMode2D.Impulse);
+            Destroy(gameObject, 0.2f);
+            animator.SetBool("death", true);
+        }
     }
 
     private IEnumerator CheckForAttack()
@@ -131,12 +143,21 @@ public class CrazyEnemyController : MonoBehaviour
             }
 
         }
-        if(collision.gameObject.GetComponent<FireBlobController>()!=null)
+        if(collision.gameObject.GetComponent<FireBlobController>()!=null && !OnFire)
 
         {
-
+            GetComponent<Rigidbody2D>().AddForce((transform.up) * 10, ForceMode2D.Impulse);
+            Destroy(gameObject, 0.2f);
+            animator.SetBool("death", true);
         }
-     /*   GetComponent<Rigidbody2D>().isKinematic = true;*/
+
+        if (collision.gameObject.GetComponent<WaterBlobController>() != null && OnFire)
+
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+            OnFire = false;
+        }
+        /*   GetComponent<Rigidbody2D>().isKinematic = true;*/
         patrolling = true;
     }
     // Update is called once per frame
