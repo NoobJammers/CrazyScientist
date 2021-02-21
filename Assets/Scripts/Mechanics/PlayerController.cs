@@ -48,7 +48,7 @@ namespace Platformer.Mechanics
 
 
         int stickyBabyCount = 0, fireBabyCount = 0, waterBabyCount = 0;
-        int maxBabyCount = 5;
+        int maxBabyCount = 3;
         [SerializeField] GameObject stickyBlobPrefab, fireBlobPrefab, waterBlobPrefab;
         [SerializeField] GameObject poof, magicPoof;
         void Awake()
