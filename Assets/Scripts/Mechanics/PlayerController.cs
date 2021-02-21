@@ -212,7 +212,7 @@ namespace Platformer.Mechanics
                         if (stickyBabyCount >= maxBabyCount)
                         {
                             stickyBabyCount = 0;
-                            GameObject go = Instantiate(stickyBlobPrefab, other.transform.position, Quaternion.identity);
+                            GameObject go = Instantiate(stickyBlobPrefab, other.transform.position + Vector3.forward * -0.2f, Quaternion.identity);
                             go.GetComponent<BlobHandler>().mergePos = transform.GetChild(0);
                             go.GetComponent<SpringJoint2D>().connectedBody = transform.GetChild(0).GetComponent<Rigidbody2D>();
                             TrainMove.ExtendTrain(go.GetComponent<FollowedBy>());
@@ -228,7 +228,7 @@ namespace Platformer.Mechanics
                         if (fireBabyCount >= maxBabyCount)
                         {
                             fireBabyCount = 0;
-                            GameObject go = Instantiate(fireBlobPrefab, other.transform.position, Quaternion.identity);
+                            GameObject go = Instantiate(fireBlobPrefab, other.transform.position + Vector3.forward * -0.2f, Quaternion.identity);
                             go.GetComponent<BlobHandler>().mergePos = transform.GetChild(0);
                             go.GetComponent<SpringJoint2D>().connectedBody = transform.GetChild(0).GetComponent<Rigidbody2D>();
                             TrainMove.ExtendTrain(go.GetComponent<FollowedBy>());
@@ -244,7 +244,7 @@ namespace Platformer.Mechanics
                         if (waterBabyCount >= maxBabyCount)
                         {
                             waterBabyCount = 0;
-                            GameObject go = Instantiate(waterBlobPrefab, other.transform.position, Quaternion.identity);
+                            GameObject go = Instantiate(waterBlobPrefab, other.transform.position + Vector3.forward * -0.2f, Quaternion.identity);
                             go.GetComponent<BlobHandler>().mergePos = transform.GetChild(0);
                             go.GetComponent<SpringJoint2D>().connectedBody = transform.GetChild(0).GetComponent<Rigidbody2D>();
                             TrainMove.ExtendTrain(go.GetComponent<FollowedBy>());
