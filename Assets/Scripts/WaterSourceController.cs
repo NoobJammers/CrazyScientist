@@ -20,7 +20,7 @@ public class WaterSourceController : MonoBehaviour
     {
         if(other.tag=="FallingWaterParticles" && transform.position.y<maxdist)
         { 
-            transform.position += new Vector3(0, 0.003f, 0);
+            transform.position += new Vector3(0, 0.03f, 0);
         }
     }
 }

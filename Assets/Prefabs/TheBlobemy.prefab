@@ -155,10 +155,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.02
-  probabilitytojump: 0.5
   probabilitytoattack: 0.7
   HowFarPlayer: 2
   forcemultiplier: 3
   secondstocheckin: 1
   OnFire: 0
-  maxdistToCover: 6
+  maxdistToCover: 2

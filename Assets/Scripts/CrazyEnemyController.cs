@@ -5,7 +5,6 @@ using UnityEngine;
 public class CrazyEnemyController : MonoBehaviour
 {
     public float speed=0.02f;
-    public float probabilitytojump=0.5f;
     public float probabilitytoattack=0.2f;
     public float HowFarPlayer = 2;
     public float forcemultiplier = 1;
@@ -15,14 +14,17 @@ public class CrazyEnemyController : MonoBehaviour
     private bool patrolling = true;
     private Transform player;
     private string[] attackdontarray ;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
        /* GetComponent<Rigidbody2D>().isKinematic = true;*/
         player = GameObject.FindGameObjectWithTag("player").transform;
+        animator = GetComponent<Animator>();
         MakeProbabilityList();
         StartCoroutine(Patrol());
         StartCoroutine(CheckForAttack());
+       
     }
 
     private IEnumerator CheckForAttack()
@@ -32,6 +34,8 @@ public class CrazyEnemyController : MonoBehaviour
          patrolling = !possibilityOfAttack();
             if(!patrolling)
             {
+
+                animator.SetTrigger("jump");
                 AttackPlayer();
             }
             }
@@ -65,6 +69,7 @@ public class CrazyEnemyController : MonoBehaviour
            
             while (!patrolling)
                 yield return new WaitForSeconds(Time.fixedDeltaTime*1);
+            
             transform.position += temptravel;
             if(transform.position.x>finalPositiveX.x )
             {
@@ -84,8 +89,15 @@ public class CrazyEnemyController : MonoBehaviour
     {
       /*  GetComponent<Rigidbody2D>().isKinematic = false;*/
         GetComponent<Rigidbody2D>().AddForce((player.position - transform.position) * forcemultiplier,ForceMode2D.Impulse);
-        
 
+        StartCoroutine(delayPatrollingAnimation());
+
+    }
+
+    IEnumerator delayPatrollingAnimation()
+    {
+        yield return new WaitForSecondsRealtime(2.3f);
+        animator.SetTrigger("patrol");
     }
 
     private bool possibilityOfAttack()
@@ -101,12 +113,22 @@ public class CrazyEnemyController : MonoBehaviour
     {
         if(collision.collider.tag=="player" && player!=null)
         {   if (OnFire && player != null)
-            { Destroy(player.gameObject,0.2f); }
+            {
+                Destroy(player.gameObject,1);
+                player.GetComponent<Animator>().SetBool("dead", true);
 
-            else if (player!=null&&Vector3.Angle(transform.up, player.position - transform.position) < 60)
-                Destroy(gameObject,0.2f);
+            }
+
+            else if (player != null && Vector3.Angle(transform.up, player.position - transform.position) < 60)
+            {
+                Destroy(gameObject, 0.2f);
+                animator.SetBool("death", true);
+            }
             else
-                Destroy(player.gameObject,0.2f);
+            {
+                Destroy(player.gameObject,1);
+                player.GetComponent<Animator>().SetBool("dead",true);
+            }
 
         }
      /*   GetComponent<Rigidbody2D>().isKinematic = true;*/
@@ -116,5 +138,9 @@ public class CrazyEnemyController : MonoBehaviour
     void Update()
     {
         
+    }
+    private void OnParticleCollision(GameObject other)
+    {
+        Debug.Log("particles hit");
     }
 }

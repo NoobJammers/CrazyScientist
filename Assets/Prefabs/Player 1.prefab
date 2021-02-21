@@ -133,10 +133,14 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   health: {fileID: 0}
   controlEnabled: 1
-  a: {fileID: 617425737}
-  b: {fileID: 0}
-  c: {fileID: 0}
-  d: {fileID: 0}
+  stickyBlobPrefab: {fileID: 4733363024591432450, guid: 83a9c21db1310a143a8d46cb578199e1,
+    type: 3}
+  fireBlobPrefab: {fileID: 7128196184649896445, guid: 8a92a84d4b221774485b7b34f8ea6267,
+    type: 3}
+  waterBlobPrefab: {fileID: 8967170399396368232, guid: bc9c2e6ca964a1d499a544ad81f630a4,
+    type: 3}
+  poof: {fileID: 100000, guid: 3156817f64ec68948ad6bb26569b9ef5, type: 3}
+  magicPoof: {fileID: 100018, guid: a40b64bf23366dc42a892af2c6ff6140, type: 3}
 --- !u!212 &8954691068884748947
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -156,7 +160,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -174,9 +178,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1907945055
-  m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingLayerID: 390492973
+  m_SortingLayer: 6
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300020, guid: ba86c7b200abe499cb750833482830b3, type: 3}
   m_Color: {r: 0.18039216, g: 0.8901961, b: 0.99215686, a: 1}
   m_FlipX: 0
@@ -223,7 +227,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ebcd826b260658c4d9536d1f140b572b, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 0
   m_CollisionDetection: 1
@@ -417,7 +421,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
