@@ -8,7 +8,7 @@ public class PlayerShooter : MonoBehaviour
     private  Rigidbody2D rigidBody;
     [SerializeField] Rigidbody2D hook;
     [SerializeField] GameObject trajectoryBlob;
-    [SerializeField] float impulseForce;
+    [SerializeField] float impulseForce = 15;
     public float releaseTime = 0.15f;
     public float maxDragDistance = 2f;
 
@@ -18,7 +18,7 @@ public class PlayerShooter : MonoBehaviour
     float timebwclicks = 0;
     void Start()
     {
-
+        StartCoroutine(SetMeUp());
     }
 
     void Update()
@@ -67,7 +67,7 @@ public class PlayerShooter : MonoBehaviour
             else
                 rigidBody.position = mousePos;
 
-            StartCoroutine(SetMeUp());
+          
 
             //Debug.Log(rigidBody.GetComponent<SpringJoint2D>().breakForce);
 
@@ -77,8 +77,13 @@ public class PlayerShooter : MonoBehaviour
 
 
     IEnumerator SetMeUp()
-    {
-        yield return new WaitForSeconds(timeInterval);
+    { while (!isPressed)
+            yield return null;
+        while(isPressed)
+        { SetTrajectory();
+            yield return new WaitForSeconds(timeInterval);
+        }
+            
       /*  SetTrajectory();*/
     }
     void SetTrajectory()
