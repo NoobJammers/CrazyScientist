@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CrazyEnemyController : MonoBehaviour
 {
@@ -163,6 +164,8 @@ public class CrazyEnemyController : MonoBehaviour
             {
                 Destroy(player.gameObject,1);
                 player.GetComponent<Animator>().SetBool("dead", true);
+                Scene a = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(a.name);
 
             }
 
@@ -175,6 +178,8 @@ public class CrazyEnemyController : MonoBehaviour
             {
                 Destroy(player.gameObject,1);
                 player.GetComponent<Animator>().SetBool("dead",true);
+                Scene a = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(a.name);
             }
 
         }
