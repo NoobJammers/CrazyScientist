@@ -59,6 +59,7 @@ namespace Platformer.Mechanics
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
             initpos = followObject.transform.localPosition;
+            transform.position = SaveSystem.recentlyactivatedposition;
         }
         protected override void OnEnable()
         {
