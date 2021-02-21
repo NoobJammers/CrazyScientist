@@ -78,10 +78,13 @@ public class PlayerShooter : MonoBehaviour
 
     IEnumerator SetMeUp()
     { while (!isPressed)
+        {
             yield return null;
-        while(isPressed)
-        { SetTrajectory();
-            yield return new WaitForSeconds(timeInterval);
+            while (isPressed)
+            {
+                SetTrajectory();
+                yield return new WaitForSeconds(timeInterval);
+            }
         }
             
       /*  SetTrajectory();*/
