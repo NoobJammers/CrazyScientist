@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5473602599673541563}
   - component: {fileID: 5473602599673541562}
   - component: {fileID: 5473602599673541557}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: WaterBabyBlob
   m_TagString: BabyBlob
   m_Icon: {fileID: 0}

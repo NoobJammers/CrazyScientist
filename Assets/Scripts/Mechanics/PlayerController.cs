@@ -42,10 +42,7 @@ namespace Platformer.Mechanics
         SpriteRenderer spriteRenderer;
         internal Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
-        public FollowedBy a;
-        public FollowedBy b;
-        public FollowedBy c;
-        public FollowedBy d;
+  
 
         public Bounds Bounds => collider2d.bounds;
 
@@ -75,8 +72,11 @@ namespace Platformer.Mechanics
         {
             base.Start();
             GameObject gameobj = GameObject.Find("Barrier");
-            gameobj.transform.position = new Vector3(transform.position.x - 2, transform.position.y - 7, transform.position.z);
-            GameObject.Find("Barrier").transform.DOMoveY(transform.position.y +10, 3);
+            if (gameobj)
+            {
+                gameobj.transform.position = new Vector3(transform.position.x - 2, transform.position.y - 7, transform.position.z);
+                GameObject.Find("Barrier").transform.DOMoveY(transform.position.y + 10, 3);
+            }
         }
 
        

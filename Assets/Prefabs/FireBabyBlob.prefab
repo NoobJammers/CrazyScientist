@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1434841745243392622}
   - component: {fileID: 1434841745243392623}
   - component: {fileID: 1434841745243392620}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: FireBabyBlob
   m_TagString: BabyBlob
   m_Icon: {fileID: 0}
