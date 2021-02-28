@@ -11,7 +11,7 @@ A Crazy Scientist uses his elemental chemicals : Fire, Water and Vortex to Blast
 
 
 ## Download Link for Windows:
-Click Here!(https://shaynedsouza.itch.io/crazy-scientist)
+[Click Here!](https://shaynedsouza.itch.io/crazy-scientist)
 ## Special Thanks to :
 1. Unity's default 2D platformer microgame (Character and Enemy assets)
 2. JMO Assets (Particle effects)
